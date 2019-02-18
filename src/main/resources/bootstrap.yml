@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: ws_gateway
+
+  cloud:
+    config:
+      uri: http://localhost:8888/configuration
+
+
+
+
+zuul:
+  prefix: /api
+  #  ignoredServices: '*'
+  routes:
+    order:
+      path: /ws_order/**
+      url: http://localhost:8082/ws_order
+    auth:
+      path: /auth/**
+      url: http://localhost:8081/auth
+
+
